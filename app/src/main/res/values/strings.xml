@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CompuzoneApp</string>
+    <string name="inventario_titulo">Inventario de CompuzoneApp</string>
+    <string name="boton_registrar">Registrar Nuevo Producto</string>
+</resources>
