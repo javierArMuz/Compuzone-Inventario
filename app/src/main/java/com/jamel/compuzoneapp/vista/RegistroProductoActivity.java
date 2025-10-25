@@ -66,8 +66,6 @@ public class RegistroProductoActivity extends AppCompatActivity {
     // -----------------------------------------------------------------
 // Método unificado para GUARDAR o ACTUALIZAR
 // -----------------------------------------------------------------
-    // Archivo: RegistroProductoActivity.java
-
     private void guardarOActualizarProducto() {
         // Limpiar errores previos
         etNombre.setError(null);

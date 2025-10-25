@@ -50,12 +50,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         // Asignar valores a las columnas (el ID es autoincremental)
-        // Asegúrate que los nombres de las columnas coincidan con los de tu tabla
+        // Asegúrarse que los nombres de las columnas coincidan con los de tu tabla
         values.put("nombre", producto.getNombre());
         values.put("cantidad", producto.getCantidad());
         values.put("precio", producto.getPrecio());
 
-        // 3. Insertar la nueva fila. El método insert retorna el ID de la fila insertada (long).
+        // 3. Insertar la nueva fila. El metodo insert retorna el ID de la fila insertada (long).
         // Si retorna -1, la inserción falló.
         long resultado = db.insert("productos", null, values);
 
@@ -70,6 +70,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Producto> obtenerTodosProductos() {
         List<Producto> listaProductos = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
+
+        // Consulta para obtener todos los productos
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_PRODUCTOS, null);
 
         if (cursor.moveToFirst()) {
@@ -80,6 +82,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         cursor.getInt(2), // cantidad
                         cursor.getDouble(3) // precio
                 );
+
+                // Crea y añade el objeto Producto a la lista
                 listaProductos.add(p);
             } while (cursor.moveToNext());
         }
@@ -145,7 +149,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public boolean eliminarProducto(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // El método delete devuelve el número de filas afectadas.
+        // El metodo delete devuelve el número de filas afectadas.
         // Tabla: "productos"
         // Cláusula WHERE: "id = ?"
         // Argumentos de selección: String.valueOf(id)
